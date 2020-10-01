@@ -25,3 +25,19 @@ Python 3.8 or higher is recommended for using this program. You need to install 
 > pip install -r requirements.txt
 
 **Pillow** is the friendly PIL fork by Alex Clark and Contributors. **PIL** is the Python Imaging Library by Fredrik Lundh and Contributors.
+
+## Compilation
+
+Picture-reader is compiled with pyinstaller. This command is used for this.
+
+> pyinstaller -F -i icon.ico -w -n Picture-reader main.py
+
+You can see what these parameters mean in the [pyinstaller documentation](https://pyinstaller.readthedocs.io/en/stable/usage.html#options).
+
+## Versioning
+
+**Picture-reader** uses [Semantic Versioning](https://semver.org/).
+
+## License
+
+This project is licensed under the MIT License, see the [LICENSE](https://github.com/RIDERIUS/Picture-reader/blob/main/LICENSE) file for details.
