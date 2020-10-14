@@ -2,10 +2,14 @@
 
 import sys
 import webbrowser
-from tkinter import Tk, Menu, Canvas, messagebox
+from tkinter import Tk, Menu, Canvas, messagebox, Label, Entry, Button
 from PIL import Image, ImageTk
 
-LICENSE_TEXT = """
+
+def show_license():
+    """ This function shows the license. """
+
+    messagebox.showinfo('License', """
 MIT License
 
 Copyright (c) 2020
@@ -28,53 +32,80 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-"""
+""")
 
-
-def show_license():
-    """ This function shows the license. """
-
-    messagebox.showinfo('License', LICENSE_TEXT)
 
 def opening_github():
     """ This function opens the github. """
 
     webbrowser.open('https://github.com/RIDERIUS/Image-Viewer')
 
+
 def show_version():
     """ This function shows the version. """
 
-    messagebox.showinfo('Version', 'Version 0.2.0')
+    messagebox.showinfo('Version', 'Version 0.3.0')
 
-def main():
-    """ Main function in the image viewer. """
 
-    file_path = str(sys.argv[1])
+def crop_image():
+    """ This function is needed to crop images. """
 
-    image_pil = Image.open(file_path)
-    (width, height) = image_pil.size
-    image_pil = image_pil.resize(
-        (width, int(image_pil.size[1] * (width / image_pil.size[0]))), Image.ANTIALIAS)
+    def cropping():
+        """This function will crop images."""
+        root.geometry(
+            f"{x_entry_cropping_window.get()}x{y_entry_cropping_window.get()}")
+        root.mainloop()
 
-    root = Tk()
-    root.title("Image-Viewer")
-    root.geometry(f'{width}x{height}')
-    root.resizable(False, False)
+    cropping_window = Tk()
+    cropping_window.geometry('404x65')
+    cropping_window.title('Crop Image')
+    cropping_window.resizable(False, False)
 
-    menu = Menu(root)
-    new_item = Menu(menu)
-    new_item.add_command(label='License', command=show_license)
-    new_item.add_command(label='Github', command=opening_github)
-    new_item.add_command(label='Version', command=show_version)
-    menu.add_cascade(label='About', menu=new_item)
-    root.config(menu=menu)
+    x_label_cropping_window = Label(cropping_window, text='Width Image')
+    x_label_cropping_window.grid(column=0, row=0)
+    y_label_cropping_window = Label(cropping_window, text='Height Image')
+    y_label_cropping_window.grid(column=2, row=0)
 
-    image = ImageTk.PhotoImage(image_pil)
+    x_entry_cropping_window = Entry(cropping_window,)
+    x_entry_cropping_window.grid(column=1, row=0)
+    y_entry_cropping_window = Entry(cropping_window)
+    y_entry_cropping_window.grid(column=3, row=0)
 
-    canv = Canvas(root, width=width, height=height)
-    canv.create_image(width / 2, height / 2, image=image)
-    canv.pack()
+    button_cropping_window = Button(
+        cropping_window, text='Submit', command=cropping)
+    button_cropping_window.grid(column=2, row=1)
 
-    root.mainloop()
+    cropping_window.mainloop()
 
-main()
+
+FILE_PATH = str(sys.argv[1])
+
+image_pil = Image.open(FILE_PATH)
+(width, height) = image_pil.size
+
+root = Tk()
+root.title("Image-Viewer")
+root.geometry(f'{width}x{height}')
+root.resizable(False, False)
+
+menu = Menu(root)
+root.config(menu=menu)
+
+about_menu = Menu(menu)
+edit_image_menu = Menu(menu)
+
+about_menu.add_command(label='License', command=show_license)
+about_menu.add_command(label='Github', command=opening_github)
+about_menu.add_command(label='Version', command=show_version)
+edit_image_menu.add_command(label='Crop Image', command=crop_image)
+
+menu.add_cascade(label='About', menu=about_menu)
+menu.add_cascade(label='Edit Image', menu=edit_image_menu)
+
+image = ImageTk.PhotoImage(image_pil)
+
+canv = Canvas(root, width=width, height=height)
+canv.create_image(width / 2, height / 2, image=image)
+canv.pack()
+
+root.mainloop()
