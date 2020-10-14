@@ -78,6 +78,31 @@ def crop_image():
     cropping_window.mainloop()
 
 
+def resize_image():
+    """ This function is needed to resizing images. """
+
+    resizing_window = Tk()
+    resizing_window.geometry('404x65')
+    resizing_window.title('Resize Image')
+    resizing_window.resizable(False, False)
+
+    x_label_resizing_window = Label(resizing_window, text='Width Image')
+    x_label_resizing_window.grid(column=0, row=0)
+    y_label_resizing_window = Label(resizing_window, text='Height Image')
+    y_label_resizing_window.grid(column=2, row=0)
+
+    x_entry_resizing_window = Entry(resizing_window,)
+    x_entry_resizing_window.grid(column=1, row=0)
+    y_entry_resizing_window = Entry(resizing_window)
+    y_entry_resizing_window.grid(column=3, row=0)
+
+    button_resizing_window = Button(
+        resizing_window, text='Submit')
+    button_resizing_window.grid(column=2, row=1)
+
+    resizing_window.mainloop()
+
+
 FILE_PATH = str(sys.argv[1])
 
 image_pil = Image.open(FILE_PATH)
@@ -98,6 +123,7 @@ about_menu.add_command(label='License', command=show_license)
 about_menu.add_command(label='Github', command=opening_github)
 about_menu.add_command(label='Version', command=show_version)
 edit_image_menu.add_command(label='Crop Image', command=crop_image)
+edit_image_menu.add_command(label='Resize Image', command=resize_image)
 
 menu.add_cascade(label='About', menu=about_menu)
 menu.add_cascade(label='Edit Image', menu=edit_image_menu)
