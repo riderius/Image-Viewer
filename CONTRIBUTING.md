@@ -5,7 +5,7 @@ The following is a set of guidelines for contributing to Image Viewer on GitHub.
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [Image Viewer of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to ridartim@gmail.com.
+This project and everyone participating in it is governed by the [Image Viewer of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to riderius.help@gmail.com.
 
 ## How Can I Contribute?
 
@@ -37,7 +37,8 @@ This section guides you through submitting an enhancement suggestion.
 
 #### Before Submitting An Enhancement Suggestion
 
-* **Check if there's already [a update](https://github.com/RIDARTIM/Image-Viewer/commits) which provides that enhancement.**
+* **Check if there's already [a update](https://github.com/
+/Image-Viewer/commits) which provides that enhancement.**
 * **Perform a cursory search** to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Enhancement Suggestion?
