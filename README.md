@@ -4,7 +4,7 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-Hi! **Image-Viewer** is a Windows image viewer based on Python 3.9.
+Hi! **Image-Viewer** is a Windows image viewer based on Python 3.
 
 ## Using:
 
@@ -18,7 +18,7 @@ Then you will see a window like this:
 
 ## Modules Used:
 
-1. pillow 8.0.0
+1. pillow
 
 Python 3.8 or higher is recommended for using this program. You need to install the pillow module. You can do this with the following command:
 
@@ -40,4 +40,4 @@ You can see what these parameters mean in the [pyinstaller documentation](https:
 
 ## License
 
-This project is licensed under the MIT License, see the [LICENSE](https://github.com/RIDERIUS/Image-Viewer/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License, see the [LICENSE](LICENSE) file for details.
