@@ -37,8 +37,7 @@ This section guides you through submitting an enhancement suggestion.
 
 #### Before Submitting An Enhancement Suggestion
 
-* **Check if there's already [a update](https://github.com/
-/Image-Viewer/commits) which provides that enhancement.**
+* **Check if there's already [a update](https://github.com/Image-Viewer/commits) which provides that enhancement.**
 * **Perform a cursory search** to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Enhancement Suggestion?
