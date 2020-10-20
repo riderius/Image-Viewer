@@ -2,13 +2,18 @@
 
 import sys
 import webbrowser
-from tkinter import Tk, Menu, Canvas, messagebox, Label, Entry, Button
+from tkinter import Tk, Menu, messagebox, Canvas, Label, Entry, Button
+from loguru import logger
 from PIL import Image, ImageTk
+
+logger.add('DEBUG.log', format='{time} {level} {message}',
+           level='DEBUG', rotation='10 KB', compression='zip')
 
 
 def show_license():
     """ This function shows the license. """
 
+    logger.info('Function show_license was initialized.')
     messagebox.showinfo('License', """
 MIT License
 
@@ -38,12 +43,14 @@ SOFTWARE.
 def opening_github():
     """ This function opens the github. """
 
+    logger.info('Function opening_github was initialized.')
     webbrowser.open('https://github.com/RIDERIUS/Image-Viewer')
 
 
 def show_version():
     """ This function shows the version. """
 
+    logger.info('Function show_version was initialized.')
     messagebox.showinfo('Version', 'Version 0.3.0')
 
 
@@ -54,6 +61,7 @@ def crop_image():
         """This function will crop images."""
         root.geometry(
             f"{x_entry_cropping_window.get()}x{y_entry_cropping_window.get()}")
+        logger.info('cropping was successful')
         root.mainloop()
 
     cropping_window = Tk()
@@ -75,11 +83,17 @@ def crop_image():
         cropping_window, text='Submit', command=cropping)
     button_cropping_window.grid(column=2, row=1)
 
+    logger.info('Function crop_image was initialized.')
     cropping_window.mainloop()
 
 
+@logger.catch
 def resize_image():
     """ This function is needed to resizing images. """
+
+    @logger.catch
+    def resizing():
+        pass
 
     resizing_window = Tk()
     resizing_window.geometry('404x65')
@@ -97,9 +111,10 @@ def resize_image():
     y_entry_resizing_window.grid(column=3, row=0)
 
     button_resizing_window = Button(
-        resizing_window, text='Submit')
+        resizing_window, text='Submit', command=resizing)
     button_resizing_window.grid(column=2, row=1)
 
+    logger.info('Function resize_image was initialized.')
     resizing_window.mainloop()
 
 
@@ -109,7 +124,7 @@ image_pil = Image.open(FILE_PATH)
 (width, height) = image_pil.size
 
 root = Tk()
-root.title("Image-Viewer")
+root.title('Image-Viewer')
 root.geometry(f'{width}x{height}')
 root.resizable(False, False)
 
@@ -134,4 +149,5 @@ canv = Canvas(root, width=width, height=height)
 canv.create_image(width / 2, height / 2, image=image)
 canv.pack()
 
+logger.info('Root window was initialized.')
 root.mainloop()
