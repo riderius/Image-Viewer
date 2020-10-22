@@ -1,4 +1,4 @@
-name: Pylint
+name: lint-analysis
 
 on: [push]
 
@@ -18,6 +18,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pylint
+        pip install flake8
     - name: Analysing the code with pylint
       run: |
         pylint `ls -R|grep .py$|xargs`
+    - name: Analysing the code with flake8
+      run: |
+          flake8 `ls -R|grep .py$|xargs`
