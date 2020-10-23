@@ -10,6 +10,7 @@ logger.add('DEBUG.log', format='{time} {level} {message}',
            level='DEBUG', rotation='10 KB', compression='zip')
 
 
+@logger.catch
 def show_license():
     """ This function shows the license. """
 
@@ -38,31 +39,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 """)
+    logger.info('Function show_license was closed.')
 
 
+@logger.catch
 def opening_github():
     """ This function opens the github. """
 
     logger.info('Function opening_github was initialized.')
     webbrowser.open('https://github.com/RIDERIUS/Image-Viewer')
+    logger.info('Function opening_github was closed.')
 
 
+@logger.catch
 def show_version():
     """ This function shows the version. """
 
     logger.info('Function show_version was initialized.')
     messagebox.showinfo('Version', 'Version 0.3.0')
+    logger.info('Function show_version was closed.')
 
 
+@logger.catch
 def crop_image():
     """ This function is needed to crop images. """
 
+    @logger.catch
     def cropping():
         """This function will crop images."""
         root.geometry(
             f"{x_entry_cropping_window.get()}x{y_entry_cropping_window.get()}")
+        logger.info(f'x_entry_cropping_window - {x_entry_cropping_window.get()}, y_entry_cropping_window - {y_entry_cropping_window.get()}')
         logger.info('cropping was successful')
         root.mainloop()
+        logger.info('Function crop_image and cropping was closed.')
 
     cropping_window = Tk()
     cropping_window.geometry('404x65')
@@ -93,7 +103,7 @@ def resize_image():
 
     @logger.catch
     def resizing():
-        pass
+        logger.info('Function resize_image and resizing was closed.')
 
     resizing_window = Tk()
     resizing_window.geometry('404x65')
