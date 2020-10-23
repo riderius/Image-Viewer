@@ -69,7 +69,10 @@ def crop_image():
         """This function will crop images."""
         root.geometry(
             f"{x_entry_cropping_window.get()}x{y_entry_cropping_window.get()}")
-        logger.info(f'x_entry_cropping_window - {x_entry_cropping_window.get()}, y_entry_cropping_window - {y_entry_cropping_window.get()}')
+        logger.info(
+            f"""
+            x_entry_cropping_window - {x_entry_cropping_window.get()}
+            y_entry_cropping_window - {y_entry_cropping_window.get()}""")
         logger.info('cropping was successful')
         root.mainloop()
         logger.info('Function crop_image and cropping was closed.')
