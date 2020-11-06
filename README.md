@@ -16,6 +16,14 @@ Then you will see a window like this:
 
 ![image](https://image.prntscr.com/image/S9h0mVITT2Kyq7lt-Z-nJw.png)
 
+## Using from the console
+
+You must write in the console:
+
+> python main.py `<path to image>`
+  
+The `<path to image>`, which is written in the line above, you must replace with the path of the image you want to open.
+
 ## Modules Used
 
 1. pillow
