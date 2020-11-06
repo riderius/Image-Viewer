@@ -8,7 +8,7 @@ Hi! **Image-Viewer** is a Windows image viewer based on Python 3.
 
 ## Using
 
-You must download `"Image-Viewer.exe` from the root of the repository. Then you have to open the image with "Image-Viewer.exe".
+You must download `Image-Viewer.exe` from the root of the repository. Then you have to open the image with "Image-Viewer.exe".
 
 ![opening_file](https://image.prntscr.com/image/wbp7ZkYURHW2kH31pf-TFA.png)
 
