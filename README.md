@@ -8,7 +8,7 @@ Hi! **Image-Viewer** is a Windows image viewer based on Python 3.
 
 ## Using
 
-You must download "Image-Viewer.exe" from the root of the repository. Then you have to open the image with "Image-Viewer.exe".
+You must download `"Image-Viewer.exe` from the root of the repository. Then you have to open the image with "Image-Viewer.exe".
 
 ![opening_file](https://image.prntscr.com/image/wbp7ZkYURHW2kH31pf-TFA.png)
 
@@ -22,7 +22,7 @@ You must write in the console:
 
 > python main.py `<path to image>`
   
-The `<path to image>`, which is written in the line above, you must replace with the path of the image you want to open.
+You must replace the `<path to image>`, which is written in the line above, with the path of the image you want to open.
 
 ## Modules Used
 
