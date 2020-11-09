@@ -112,7 +112,7 @@ def resize_image():
             x_entry_resizing_window - {x_entry_resizing_window.get()}
             y_entry_resizing_window - {y_entry_resizing_window.get()}""")
 
-        # There should be a function here that would resize the image.
+        # TODO: There should be a function text here that resizes the image.
 
     resizing_window = Tk()
     resizing_window.geometry('404x65')
