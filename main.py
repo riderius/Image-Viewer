@@ -18,7 +18,7 @@ def show_license():
     messagebox.showinfo('License', """
 MIT License
 
-Copyright (c) 2020
+Copyright (c) 2020 RIDERIUS
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ def show_version():
     """ This function shows the version. """
 
     logger.info('Function show_version was initialized.')
-    messagebox.showinfo('Version', 'Version 0.4.0')
+    messagebox.showinfo('Version', 'Version 0.4.1')
     logger.info('Function show_version was closed.')
 
 
