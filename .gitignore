@@ -130,3 +130,7 @@ dmypy.json
 
 # Archived logs in zip
 *.log.zip
+
+# IDE files
+.idea/
+.vscode/

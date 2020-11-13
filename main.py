@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """ This is the main file to launch the Image-Viewer. """
 
 import sys
@@ -106,6 +108,8 @@ def resize_image():
 
     @logger.catch
     def resizing():
+        """This function will resize images."""
+
         logger.info('Function resize_image and resizing was closed.')
         logger.info(
             f"""
@@ -164,9 +168,9 @@ menu.add_cascade(label='Edit Image', menu=edit_image_menu)
 
 image = ImageTk.PhotoImage(image_pil)
 
-canv = Canvas(root, width=width, height=height)
-canv.create_image(width / 2, height / 2, image=image)
-canv.pack()
+canvas = Canvas(root, width=width, height=height)
+canvas.create_image(width / 2, height / 2, image=image)
+canvas.pack()
 
 logger.info('Root window was initialized.')
 root.mainloop()
