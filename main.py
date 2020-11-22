@@ -4,7 +4,7 @@
 
 import sys
 import webbrowser
-from tkinter import Tk, Menu, messagebox, Canvas, Label, Entry, Button
+from tkinter import Tk, Menu, Toplevel, messagebox, Canvas, Label, Entry, Button
 from loguru import logger
 from PIL import Image, ImageTk
 
@@ -58,7 +58,7 @@ def show_version():
     """ This function shows the version of the project. """
 
     logger.info('Function show_version was initialized.')
-    messagebox.showinfo('Version', 'Version 0.4.1')
+    messagebox.showinfo('Version', 'Version 0.5.0')
     logger.info('Function show_version was closed.')
 
 
@@ -110,13 +110,30 @@ def resize_image():
     def resizing():
         """This function will resize images."""
 
+        global root
+
         logger.info('Function resize_image and resizing was closed.')
         logger.info(
             f"""
             x_entry_resizing_window - {x_entry_resizing_window.get()}
             y_entry_resizing_window - {y_entry_resizing_window.get()}""")
 
-        # TODO: There should be a function text here that resizes the image.
+        resize = int(x_entry_resizing_window.get()), int(
+            y_entry_resizing_window.get())
+
+        resized_img = image_pil.resize(resize)
+        resized_img.save('resized_image.png')
+
+        reimage_pil = Image.open('resized_image.png')
+        (width, height) = reimage_pil.size
+        reimage = ImageTk.PhotoImage(reimage_pil)
+
+        root.destroy()
+
+        root = Toplevel()
+        root.geometry(f'{width}x{height}')
+
+        main(width, height, reimage)
 
     resizing_window = Tk()
     resizing_window.geometry('404x65')
@@ -141,36 +158,43 @@ def resize_image():
     resizing_window.mainloop()
 
 
+@logger.catch
+def main(width, height, image):
+
+    root.title('Image-Viewer')
+    root.resizable(False, False)
+
+    menu = Menu(root)
+    root.config(menu=menu)
+
+    about_menu = Menu(menu)
+    edit_image_menu = Menu(menu)
+
+    about_menu.add_command(label='License', command=show_license)
+    about_menu.add_command(label='Github', command=opening_github)
+    about_menu.add_command(label='Version', command=show_version)
+    edit_image_menu.add_command(label='Crop Image', command=crop_image)
+    edit_image_menu.add_command(label='Resize Image', command=resize_image)
+
+    menu.add_cascade(label='About', menu=about_menu)
+    menu.add_cascade(label='Edit Image', menu=edit_image_menu)
+
+    canvas = Canvas(root, width=width, height=height)
+    canvas.create_image(width / 2, height / 2, image=image)
+    canvas.pack()
+
+    logger.info('Root window was initialized.')
+    root.mainloop()
+
+
 FILE_PATH = str(sys.argv[1])
 
 image_pil = Image.open(FILE_PATH)
 (width, height) = image_pil.size
 
-root = Tk()
-root.title('Image-Viewer')
+root = Toplevel()
 root.geometry(f'{width}x{height}')
-root.resizable(False, False)
 
-menu = Menu(root)
-root.config(menu=menu)
+main_image = ImageTk.PhotoImage(image_pil)
 
-about_menu = Menu(menu)
-edit_image_menu = Menu(menu)
-
-about_menu.add_command(label='License', command=show_license)
-about_menu.add_command(label='Github', command=opening_github)
-about_menu.add_command(label='Version', command=show_version)
-edit_image_menu.add_command(label='Crop Image', command=crop_image)
-edit_image_menu.add_command(label='Resize Image', command=resize_image)
-
-menu.add_cascade(label='About', menu=about_menu)
-menu.add_cascade(label='Edit Image', menu=edit_image_menu)
-
-image = ImageTk.PhotoImage(image_pil)
-
-canvas = Canvas(root, width=width, height=height)
-canvas.create_image(width / 2, height / 2, image=image)
-canvas.pack()
-
-logger.info('Root window was initialized.')
-root.mainloop()
+main(width, height, main_image)
