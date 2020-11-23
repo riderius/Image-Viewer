@@ -1,7 +1,6 @@
 # Image-Viewer
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 Hi! **Image-Viewer** is a Windows image viewer based on Python 3.
