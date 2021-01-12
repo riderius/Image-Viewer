@@ -4,7 +4,7 @@
 
 import sys
 import webbrowser
-import tkinter as tk
+from tkinter import Tk, Menu, Toplevel, messagebox, Canvas, Label, Entry, Button
 from loguru import logger
 from PIL import Image, ImageTk
 
@@ -17,7 +17,7 @@ def show_license():
     """ This function shows the license of the project. """
 
     logger.info('Function show_license was initialized.')
-    tk.messagebox.showinfo('License', """
+    messagebox.showinfo('License', """
 MIT License
 
 Copyright (c) 2020 RIDERIUS
@@ -58,7 +58,7 @@ def show_version():
     """ This function shows the version of the project. """
 
     logger.info('Function show_version was initialized.')
-    tk.messagebox.showinfo('Version', 'Version 0.5.0')
+    messagebox.showinfo('Version', 'Version 0.5.0')
     logger.info('Function show_version was closed.')
 
 
@@ -79,22 +79,22 @@ def crop_image():
         root.mainloop()
         logger.info('Function crop_image and cropping was closed.')
 
-    cropping_window = tk.Tk()
+    cropping_window = Tk()
     cropping_window.geometry('404x65')
     cropping_window.title('Crop Image')
     cropping_window.resizable(False, False)
 
-    x_label_cropping_window = tk.Label(cropping_window, text='Width Image')
+    x_label_cropping_window = Label(cropping_window, text='Width Image')
     x_label_cropping_window.grid(column=0, row=0)
-    y_label_cropping_window = tk.Label(cropping_window, text='Height Image')
+    y_label_cropping_window = Label(cropping_window, text='Height Image')
     y_label_cropping_window.grid(column=2, row=0)
 
-    x_entry_cropping_window = tk.Entry(cropping_window,)
+    x_entry_cropping_window = Entry(cropping_window,)
     x_entry_cropping_window.grid(column=1, row=0)
-    y_entry_cropping_window = tk.Entry(cropping_window)
+    y_entry_cropping_window = Entry(cropping_window)
     y_entry_cropping_window.grid(column=3, row=0)
 
-    button_cropping_window = tk.Button(
+    button_cropping_window = Button(
         cropping_window, text='Submit', command=cropping)
     button_cropping_window.grid(column=2, row=1)
 
@@ -130,27 +130,27 @@ def resize_image():
 
         root.destroy()
 
-        root = tk.Toplevel()
+        root = Toplevel()
         root.geometry(f'{width}x{height}')
 
         main(width, height, reimage)
 
-    resizing_window = tk.Tk()
+    resizing_window = Tk()
     resizing_window.geometry('404x65')
     resizing_window.title('Resize Image')
     resizing_window.resizable(False, False)
 
-    x_label_resizing_window = tk.Label(resizing_window, text='Width Image')
+    x_label_resizing_window = Label(resizing_window, text='Width Image')
     x_label_resizing_window.grid(column=0, row=0)
-    y_label_resizing_window = tk.Label(resizing_window, text='Height Image')
+    y_label_resizing_window = Label(resizing_window, text='Height Image')
     y_label_resizing_window.grid(column=2, row=0)
 
-    x_entry_resizing_window = tk.Entry(resizing_window,)
+    x_entry_resizing_window = Entry(resizing_window,)
     x_entry_resizing_window.grid(column=1, row=0)
-    y_entry_resizing_window = tk.Entry(resizing_window)
+    y_entry_resizing_window = Entry(resizing_window)
     y_entry_resizing_window.grid(column=3, row=0)
 
-    button_resizing_window = tk.Button(
+    button_resizing_window = Button(
         resizing_window, text='Submit', command=resizing)
     button_resizing_window.grid(column=2, row=1)
 
@@ -164,11 +164,11 @@ def main(width, height, image):
     root.title('Image-Viewer')
     root.resizable(False, False)
 
-    menu = tk.Menu(root)
+    menu = Menu(root)
     root.config(menu=menu)
 
-    about_menu = tk.Menu(menu)
-    edit_image_menu = tk.Menu(menu)
+    about_menu = Menu(menu)
+    edit_image_menu = Menu(menu)
 
     about_menu.add_command(label='License', command=show_license)
     about_menu.add_command(label='Github', command=opening_github)
@@ -179,7 +179,7 @@ def main(width, height, image):
     menu.add_cascade(label='About', menu=about_menu)
     menu.add_cascade(label='Edit Image', menu=edit_image_menu)
 
-    canvas = tk.Canvas(root, width=width, height=height)
+    canvas = Canvas(root, width=width, height=height)
     canvas.create_image(width / 2, height / 2, image=image)
     canvas.pack()
 
@@ -192,7 +192,7 @@ FILE_PATH = str(sys.argv[1])
 image_pil = Image.open(FILE_PATH)
 (width, height) = image_pil.size
 
-root = tk.Toplevel()
+root = Toplevel()
 root.geometry(f'{width}x{height}')
 
 main_image = ImageTk.PhotoImage(image_pil)
