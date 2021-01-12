@@ -134,3 +134,6 @@ dmypy.json
 # IDE files
 .idea/
 .vscode/
+
+# Files created by Image-Viewer
+resized_image.png
