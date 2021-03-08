@@ -1,4 +1,4 @@
 colorama==0.4.4
 loguru==0.5.3
-pillow==8.1.1
+pillow==8.1.2
 win32-setctime==1.0.3
