@@ -39,7 +39,7 @@ Python 3.8 or higher is recommended for using this program. You need to install 
 
 Image-Viewer is compiled with pyinstaller. This command is used for this.
 
-> pyinstaller -F -i icon.ico -w -n Image-Viewer main.py
+> pyinstaller -F -i docs\icon.ico -w -n Image-Viewer main.py
 
 You can see what these parameters mean in the [pyinstaller documentation](https://pyinstaller.readthedocs.io/en/stable/usage.html#options).
 
